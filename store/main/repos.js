@@ -4,6 +4,7 @@ export const state = () => ({
     github: null,
     iconId: null,
     color: null,
+    topContributors: null,
   },
 })
 
@@ -49,10 +50,15 @@ export const actions = {
       const h = this.$hashids.decode(routeHash) // Hash Decode
       const response = await this.$axios.$get('/github/repositories/' + h[0])
 
+      const contrubitors = await this.$axios.$get(
+        '/github/repos/' + response.full_name + '/contributors'
+      )
+
       const repoData = {
         github: response,
         icon: h[1], // Icon ID From Decoded Hash
         color: `rgb(${h[2]},${h[3]},${h[4]})`, // RGB Color From Decoded Hashes
+        topContributors: contrubitors.slice(0, 10),
       }
 
       context.commit('setRepoData', repoData)
