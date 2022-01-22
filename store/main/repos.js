@@ -58,7 +58,7 @@ export const actions = {
         github: response,
         icon: h[1], // Icon ID From Decoded Hash
         color: `rgb(${h[2]},${h[3]},${h[4]})`, // RGB Color From Decoded Hashes
-        topContributors: contrubitors.slice(0, 10),
+        topContributors: contrubitors.slice(0, 2),
       }
 
       context.commit('setRepoData', repoData)

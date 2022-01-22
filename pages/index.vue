@@ -48,7 +48,7 @@
           class="btn pink"
           @click="generate"
         >
-          <span class="material-icons"> link_variant </span>
+          <span class="material-icons"> link </span>
           Generate Link
         </button>
         <a v-else class="btn pink" :href="hashedLink" target="_blank">
