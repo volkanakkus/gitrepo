@@ -12,7 +12,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'SelectIcons',
   computed: {
     ...mapGetters({
       icons: 'main/icons/getIcons',
@@ -20,7 +19,7 @@ export default {
   },
   methods: {
     selectIcons(icon) {
-      this.$emit('selectedIcon', icon)
+      this.$emit('getIcon', icon)
     },
   },
 }

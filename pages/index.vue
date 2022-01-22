@@ -20,7 +20,9 @@
     <div>
       <button @click="generate">Generate Link</button>
     </div>
-    <SelectIcons @selectedIcon="setIcon" />
+    <SelectColors @getColor="selectedColor = $event" />
+    <span> {{ selectedColor }} </span>
+    <SelectIcons @getIcon="selectedIcon = $event" />
     <div v-if="hashedLink">
       <nuxt-link :to="hashedLink">{{ generatedLink }}</nuxt-link>
     </div>
@@ -40,6 +42,7 @@ export default {
       username: null,
       reponame: null,
       selectedIcon: null,
+      selectedColor: null,
       generatedLink: null,
     }
   },
@@ -53,10 +56,17 @@ export default {
       generateLink: 'main/repos/generateLink',
     }),
     async generate() {
-      if (this.username && this.reponame) {
+      if (
+        this.username &&
+        this.reponame &&
+        this.selectedColor &&
+        this.selectedIcon
+      ) {
         const data = {
           username: this.username,
           reponame: this.reponame,
+          color: this.selectedColor,
+          icon: this.selectedIcon,
         }
         await this.generateLink(data)
 
@@ -64,9 +74,6 @@ export default {
           this.generatedLink = window.location.href + this.hashedLink
         }
       }
-    },
-    setIcon(icon) {
-      this.selectedIcon = icon
     },
   },
 }
