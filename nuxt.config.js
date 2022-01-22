@@ -24,10 +24,6 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-  publicRuntimeConfig: {
-    APIKEY: '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',
-  },
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: '@/plugins/hashids.js' }],
 
