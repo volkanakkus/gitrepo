@@ -18,6 +18,7 @@ export default {
         href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
       },
     ],
+    script: [{ src: 'https://buttons.github.io/buttons.js', defer: true }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

@@ -1,10 +1,21 @@
 <template>
   <div>
+    <a
+      v-if="repoData"
+      class="github-button"
+      href="https://github.com/ntkme"
+      data-size="large"
+      data-show-count="true"
+      aria-label="Follow @ntkme on GitHub"
+      >Follow @ntkme</a
+    >
     <span v-if="selectedIcon" class="material-icons">
       {{ selectedIcon.name }}
     </span>
 
-    <span :style="{ color: repoData.color }"> Color: {{ repoData.color }}</span>
+    <span v-if="repoData" :style="{ color: repoData.color }">
+      Color: {{ repoData.color }}</span
+    >
 
     <pre>
      {{ repoData }}

@@ -25,6 +25,12 @@
     <SelectIcons @getIcon="selectedIcon = $event" />
     <div v-if="hashedLink">
       <nuxt-link :to="hashedLink">{{ generatedLink }}</nuxt-link>
+      <span>
+        <a
+          :href="`http://twitter.com/share?text=${tweetText}&url=${generatedLink}`"
+          >Tweet</a
+        >
+      </span>
     </div>
     <span v-if="selectedIcon" class="material-icons">
       {{ selectedIcon.name }}
@@ -44,6 +50,7 @@ export default {
       selectedIcon: null,
       selectedColor: null,
       generatedLink: null,
+      tweetText: 'Look at this awesome repo I found!',
     }
   },
   computed: {
