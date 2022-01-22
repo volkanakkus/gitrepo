@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="select-color">
     <input v-model="color" type="color" @input="setColor" />
     <span> {{ rgbColor }} </span>
   </div>
@@ -9,8 +9,8 @@
 export default {
   data() {
     return {
-      color: '#000000',
-      rgbColor: null,
+      color: '#28CBA4',
+      rgbColor: 'rgb(40,203,164)',
     }
   },
   methods: {

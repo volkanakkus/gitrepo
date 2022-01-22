@@ -1,0 +1,25 @@
+$font:'Montserrat', sans-serif;
+$blue:#70CBFF;
+$blueDark:#5faedb;
+$pink:#D998E3;
+$pinkDark:#c184ca;
+$yellow:#FECF58;
+$yellowDark:#dab14a;
+$white:#FFF;
+$gray:#F9F9F9;
+$fontBlack: #322929;
+$fontMid: #646464;
+$fontDark: #818181;
+$fontGray: #909090;
+$shadow: 0px 1px 12px -6px rgba(0, 0, 0, 0.25);
+$borderRadius: 9px;
+$borderRounded: 200px;
+
+body, * {
+  font-family: $font;
+}
+
+span.svg-icons img {
+  width: 20px;
+}
+

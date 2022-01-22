@@ -1,14 +1,17 @@
 <template>
   <div>
-    <a
-      v-if="repoData"
-      class="github-button"
-      href="https://github.com/ntkme"
-      data-size="large"
-      data-show-count="true"
-      aria-label="Follow @ntkme on GitHub"
-      >Follow @ntkme</a
-    >
+    <client-only>
+      <a
+        v-if="repoData"
+        class="github-button"
+        href="https://github.com/ntkme"
+        data-size="large"
+        data-show-count="true"
+        aria-label="Follow @ntkme on GitHub"
+        >Follow @ntkme</a
+      >
+    </client-only>
+
     <span v-if="selectedIcon" class="material-icons">
       {{ selectedIcon.name }}
     </span>

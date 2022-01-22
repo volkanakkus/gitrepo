@@ -1,40 +1,65 @@
 <template>
   <div id="app">
-    <div>
-      <h3>create your link:</h3>
+    <div class="head">
+      <h2>Github Cards</h2>
+      <h4>Make shareable github repo cards</h4>
     </div>
-    <div>
-      <input
-        v-model="username"
-        name="github-username"
-        placeholder="github username"
-        type="text"
-      />
-      <input
-        v-model="reponame"
-        name="github-repo"
-        placeholder="repo url"
-        type="text"
-      />
+
+    <div class="card">
+      <div class="inputs">
+        <input
+          v-model="username"
+          name="github-username"
+          placeholder="github username"
+          type="text"
+        />
+        <span class="input-divider"> / </span>
+        <input
+          v-model="reponame"
+          name="github-repo"
+          placeholder="repo url"
+          type="text"
+        />
+      </div>
+      <div class="select-color">
+        <span class="label">Select Template Color</span>
+        <SelectColors @getColor="selectedColor = $event" />
+      </div>
+      <div class="select-icon">
+        <span class="label">Select Icon</span>
+        <SelectIcons @getIcon="selectedIcon = $event" />
+      </div>
     </div>
-    <div>
-      <button @click="generate">Generate Link</button>
-    </div>
-    <SelectColors @getColor="selectedColor = $event" />
-    <span> {{ selectedColor }} </span>
-    <SelectIcons @getIcon="selectedIcon = $event" />
-    <div v-if="hashedLink">
-      <nuxt-link :to="hashedLink">{{ generatedLink }}</nuxt-link>
-      <span>
+
+    <div class="bottom">
+      <div class="buttons">
         <a
+          v-if="hashedLink"
+          class="btn blue"
           :href="`http://twitter.com/share?text=${tweetText}&url=${generatedLink}`"
-          >Tweet</a
         >
-      </span>
+          <span class="svg-icons">
+            <img src="@/assets/icons/twitter.svg" /> </span
+          >Tweet Your Link</a
+        >
+        <button
+          v-if="!hashedLink"
+          :disabled="!username || !reponame || !selectedColor || !selectedIcon"
+          class="btn pink"
+          @click="generate"
+        >
+          <span class="material-icons"> link_variant </span>
+          Generate Link
+        </button>
+        <a v-else class="btn pink" :href="hashedLink" target="_blank">
+          <span class="material-icons"> open_in_new </span>
+          Open Link
+        </a>
+      </div>
+      <div v-if="hashedLink" class="link-area">
+        <a :href="hashedLink" target="_blank">{{ generatedLink }}</a>
+      </div>
     </div>
-    <span v-if="selectedIcon" class="material-icons">
-      {{ selectedIcon.name }}
-    </span>
   </div>
 </template>
 
