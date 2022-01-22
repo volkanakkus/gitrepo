@@ -3,21 +3,21 @@
     <pre>
      {{ repoData }}
     </pre>
+    <span class="material-icons"> settings </span>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
-      repoData: null,
+      repo: null,
     }
   },
   async fetch() {
-    const repoID = String(this.$hashids.decode(this.$route.params.hash)[0])
-
-    const response = await this.$axios.get('/github/repositories/' + repoID)
-    this.repoData = response.data
+    await this.getRepo()
   },
   head() {
     return {
@@ -30,6 +30,16 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    ...mapGetters({
+      repoData: 'main/repos/getRepoData',
+    }),
+  },
+  methods: {
+    ...mapActions({
+      getRepo: 'main/repos/getRepo',
+    }),
   },
 }
 </script>

@@ -18,40 +18,55 @@
       />
     </div>
     <div>
-      <button @click="generateLink">Generate Link</button>
+      <button @click="generate">Generate Link</button>
     </div>
-    <div v-if="generatedLink">
+    <SelectIcons @selectedIcon="setIcon" />
+    <div v-if="hashedLink">
       <nuxt-link :to="hashedLink">{{ generatedLink }}</nuxt-link>
     </div>
+    <span v-if="selectedIcon" class="material-icons">
+      {{ selectedIcon.name }}
+    </span>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'IndexPage',
   data() {
     return {
       username: null,
       reponame: null,
-      hashedLink: null,
+      selectedIcon: null,
       generatedLink: null,
     }
   },
+  computed: {
+    ...mapGetters({
+      hashedLink: 'main/repos/getHashedLink',
+    }),
+  },
   methods: {
-    async generateLink() {
+    ...mapActions({
+      generateLink: 'main/repos/generateLink',
+    }),
+    async generate() {
       if (this.username && this.reponame) {
-        const response = await this.$axios.get(
-          '/github/repos/' + this.username + '/' + this.reponame
-        )
-        this.hashedLink = this.$hashids.encode(response.data.id)
+        const data = {
+          username: this.username,
+          reponame: this.reponame,
+        }
+        await this.generateLink(data)
 
         if (process.client) {
           this.generatedLink = window.location.href + this.hashedLink
         }
       }
-
-      // const repoID = this.$hashids.encode(this.getRepoID(this.reponame))
-      // this.generatedLink = '/github/' + repoID
+    },
+    setIcon(icon) {
+      this.selectedIcon = icon
     },
   },
 }
