@@ -65,6 +65,7 @@
       <div v-if="hashedLink" class="link-area">
         <a :href="hashedLink" target="_blank">{{ generatedLink }}</a>
       </div>
+      <div v-if="error" class="link-area error">This repo does not exist.</div>
     </div>
   </div>
 </template>
@@ -87,6 +88,7 @@ export default {
   computed: {
     ...mapGetters({
       hashedLink: 'main/repos/getHashedLink',
+      error: 'main/repos/getError',
     }),
   },
   methods: {
@@ -190,6 +192,11 @@ export default {
     border-radius: $borderRadius;
     font-weight: 600;
     text-align: center;
+
+    &.error {
+      background: #f59696;
+      color: $white;
+    }
   }
 }
 </style>

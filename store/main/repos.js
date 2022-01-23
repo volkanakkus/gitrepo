@@ -6,11 +6,13 @@ export const state = () => ({
     color: null,
     topContributors: null,
   },
+  error: null,
 })
 
 export const getters = {
   getHashedLink: (state) => state.hashedLink,
   getRepoData: (state) => state.repoData,
+  getError: (state) => state.error,
 }
 
 export const mutations = {
@@ -19,6 +21,9 @@ export const mutations = {
   },
   setRepoData(state, payload) {
     state.repoData = payload
+  },
+  setError(state, payload) {
+    state.error = payload
   },
 }
 
@@ -38,7 +43,9 @@ export const actions = {
       console.log(response.id, icon, color.r, color.g, color.b)
 
       context.commit('setHashedLink', hashedLink)
+      context.commit('setError', false)
     } catch (err) {
+      context.commit('setError', true)
       context.commit('setHashedLink', null)
       console.log('Error: ', err)
     }
