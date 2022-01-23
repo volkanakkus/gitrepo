@@ -1,10 +1,33 @@
-# STORE
+# Gitrepo Mono Frontend Challenge  
 
-**This directory is not required, you can delete it if you don't want to use it.**
+Hey, It's Volkan. It's a mono front-end challange .  
 
-This directory contains your Vuex Store files.
-Vuex Store option is implemented in the Nuxt.js framework.
+- Project framework: ```Nuxt.js - 2.15.8```
+- Vuex: ```Dynamic Vuex Module Registration```
+- CSS Framework: ```-No CSS Framework-``` - ```Just Pure SCSS```
+- HTTP Requests: ```Axios```
+- Proxy: ```@Nuxtjs/Proxy```
+- External APIs: **```Github Open Api```** 
+- Linting: ```Eslint``` & ```Prettier```
 
-Creating a file in this directory automatically activates the option in the framework.
+I also designed whole UI by myself and [you can see](https://www.figma.com/file/ZpdiBgfIY7XbWSVJtVNVzN/Github-Cards) or [duplicate on Figma](https://www.figma.com/community/file/1066894731438364215/Github-Cards)  
+You can follow build introductions below to serve or build this project.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/vuex-store).
+## Introductions
+
+```bash
+# to install dependencies
+$ npm install 
+
+# to serve with hot reload at localhost:3000
+$ npm run dev
+
+# to build for production and launch server
+$ npm run build
+$ npm run start 
+```
+
+## Contact
+
+For any further questions you can reach me with mail:  info@volkanakkus.com
+Thank you! 
