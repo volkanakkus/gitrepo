@@ -47,7 +47,7 @@
             <span class="material-icons"> open_in_new </span>
             Open
           </a>
-          <button class="btn">
+          <button class="btn" @click="regenerate">
             <span class="material-icons"> link </span>
             Regenerate
           </button>
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'IndexPage',
@@ -93,6 +93,9 @@ export default {
     ...mapActions({
       generateLink: 'main/repos/generateLink',
     }),
+    ...mapMutations({
+      setHashedLink: 'main/repos/setHashedLink',
+    }),
     async generate() {
       if (
         this.username &&
@@ -112,6 +115,11 @@ export default {
           this.generatedLink = window.location.href + this.hashedLink
         }
       }
+    },
+    regenerate() {
+      this.username = null
+      this.reponame = null
+      this.setHashedLink(null)
     },
   },
 }

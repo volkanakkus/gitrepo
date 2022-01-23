@@ -136,13 +136,13 @@ export default {
       icons: 'main/icons/getIcons',
     }),
   },
+  mounted() {
+    this.generatedLink = window.location.href + this.hashedLink
+  },
   methods: {
     ...mapActions({
       getRepo: 'main/repos/getRepo',
     }),
-  },
-  mounted() {
-    this.generatedLink = window.location.href + this.hashedLink
   },
 }
 </script>
