@@ -195,7 +195,7 @@ export default {
     },
   },
   mounted() {
-    this.generatedLink = window.location.href + this.hashedLink
+    this.generatedLink = window.location.href
   },
 }
 </script>
