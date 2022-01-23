@@ -1,7 +1,7 @@
 <template>
   <div class="main home">
     <div class="head">
-      <h2>Github Cards</h2>
+      <h2>Gitrepo Cards</h2>
       <h4>Make shareable github repo cards</h4>
     </div>
 

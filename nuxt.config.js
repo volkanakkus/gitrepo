@@ -1,14 +1,19 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'github-cards',
+    title: 'Gitrepo - Generate Your Github Repo Card Link',
     htmlAttrs: {
       lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Make shareable github repository cards links with your username and repo url',
+      },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [

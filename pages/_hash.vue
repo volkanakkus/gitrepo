@@ -118,7 +118,7 @@ export default {
         ? `${this.repoData.github.full_name} - ${
             this.repoData.github.description || 'A Github Repo'
           }`
-        : 'View Repo',
+        : 'View Repo - Gitrepo Cards',
       meta: [
         {
           hid: 'description',
@@ -126,6 +126,50 @@ export default {
           content: this.repoData
             ? this.repoData.github.description
             : 'description',
+        },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: this.generatedLink },
+        {
+          property: 'og:title',
+          content: this.repoData
+            ? `${this.repoData.github.full_name} - ${
+                this.repoData.github.description || 'A Github Repo'
+              }`
+            : 'View Repo - Gitrepo Cards',
+        },
+        {
+          property: 'og:description',
+          content: this.repoData
+            ? `${this.repoData.github.description || 'A Github Repo'}`
+            : 'View Repo - Gitrepo Cards',
+        },
+        {
+          property: 'og:image',
+          content: this.repoData
+            ? `${this.repoData.github.owner.avatar_url}`
+            : '',
+        },
+        { property: 'twitter:card', content: 'summary' },
+        { property: 'twitter:url', content: this.generatedLink },
+        {
+          property: 'twitter:title',
+          content: this.repoData
+            ? `${this.repoData.github.full_name} - ${
+                this.repoData.github.description || 'A Github Repo'
+              }`
+            : 'View Repo - Gitrepo Cards',
+        },
+        {
+          property: 'twitter:description',
+          content: this.repoData
+            ? `${this.repoData.github.description || 'A Github Repo'}`
+            : 'View Repo - Gitrepo Cards',
+        },
+        {
+          property: 'twitter:image',
+          content: this.repoData
+            ? `${this.repoData.github.owner.avatar_url}`
+            : '',
         },
       ],
     }
