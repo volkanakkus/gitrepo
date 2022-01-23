@@ -50,25 +50,22 @@ export const actions = {
       console.log('Error: ', err)
     }
   },
-  async getRepo(context, repoID) {
+  async getRepo(context, hash) {
     try {
-      console.log()
-      const routeHash = this.app.router.currentRoute.params.hash
-      const h = this.$hashids.decode(routeHash) // Hash Decode
+      const h = this.$hashids.decode(hash) // Hash Decode
       const response = await this.$axios.$get('/github/repositories/' + h[0])
-
       const contrubitors = await this.$axios.$get(
         '/github/repos/' + response.full_name + '/contributors'
       )
 
-      const repoData = {
+      return {
         github: response,
         icon: h[1], // Icon ID From Decoded Hash
         color: `rgb(${h[2]},${h[3]},${h[4]})`, // RGB Color From Decoded Hashes
         topContributors: contrubitors.slice(0, 2),
       }
 
-      context.commit('setRepoData', repoData)
+      // context.commit('setRepoData', repoData)
     } catch (err) {
       context.commit('setRepoData', null)
       console.log('Error: ', err)

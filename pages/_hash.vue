@@ -96,21 +96,31 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
+  async asyncData({ store, route }) {
+    try {
+      const repoData = await store.dispatch(
+        'main/repos/getRepo',
+        route.params.hash,
+        {
+          root: true,
+        }
+      )
+
+      return {
+        repoData,
+      }
+    } catch (error) {
+      // Redirect to error page or 404 depending on server response
+    }
+  },
   data() {
     return {
-      selectedIcon: null,
       generatedLink: null,
       tweetText: 'Look at this awesome repo I found!',
     }
-  },
-  async fetch() {
-    await this.getRepo()
-    this.selectedIcon = await this.icons.find(
-      (icon) => icon.id === this.repoData.icon
-    )
   },
   head() {
     return {
@@ -176,17 +186,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      repoData: 'main/repos/getRepoData',
       icons: 'main/icons/getIcons',
     }),
+    selectedIcon() {
+      return this.icons.find((icon) => icon.id === this.repoData.icon) || null
+    },
   },
   mounted() {
     this.generatedLink = window.location.href + this.hashedLink
-  },
-  methods: {
-    ...mapActions({
-      getRepo: 'main/repos/getRepo',
-    }),
   },
 }
 </script>
