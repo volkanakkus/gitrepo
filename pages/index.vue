@@ -55,6 +55,7 @@
         <a
           v-if="hashedLink"
           class="btn blue"
+          target="_blank"
           :href="`http://twitter.com/share?text=${tweetText}&url=${generatedLink}`"
         >
           <span class="svg-icons">

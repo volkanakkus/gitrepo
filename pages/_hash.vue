@@ -84,6 +84,7 @@
         </nuxt-link>
         <a
           class="btn blue"
+          target="_blank"
           :href="`http://twitter.com/share?text=${tweetText}&url=${generatedLink}`"
         >
           <span class="svg-icons">
@@ -187,6 +188,7 @@ export default {
   computed: {
     ...mapGetters({
       icons: 'main/icons/getIcons',
+      hashedLink: 'main/repos/getHashedLink',
     }),
     selectedIcon() {
       return this.icons.find((icon) => icon.id === this.repoData.icon) || null
