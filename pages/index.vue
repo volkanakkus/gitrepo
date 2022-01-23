@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="main home">
     <div class="head">
       <h2>Github Cards</h2>
       <h4>Make shareable github repo cards</h4>
@@ -10,38 +10,29 @@
         <input
           v-model="username"
           name="github-username"
-          placeholder="github username"
+          placeholder="Github Username"
           type="text"
         />
         <span class="input-divider"> / </span>
         <input
           v-model="reponame"
           name="github-repo"
-          placeholder="repo url"
+          placeholder="Repo"
           type="text"
         />
       </div>
       <div class="select-color">
-        <span class="label">Select Template Color</span>
+        <span class="label">Select Template Color:</span>
         <SelectColors @getColor="selectedColor = $event" />
       </div>
       <div class="select-icon">
-        <span class="label">Select Icon</span>
+        <span class="label">Select Icon:</span>
         <SelectIcons @getIcon="selectedIcon = $event" />
       </div>
     </div>
 
     <div class="bottom">
       <div class="buttons">
-        <a
-          v-if="hashedLink"
-          class="btn blue"
-          :href="`http://twitter.com/share?text=${tweetText}&url=${generatedLink}`"
-        >
-          <span class="svg-icons">
-            <img src="@/assets/icons/twitter.svg" /> </span
-          >Tweet Your Link</a
-        >
         <button
           v-if="!hashedLink"
           :disabled="!username || !reponame || !selectedColor || !selectedIcon"
@@ -51,10 +42,25 @@
           <span class="material-icons"> link </span>
           Generate Link
         </button>
-        <a v-else class="btn pink" :href="hashedLink" target="_blank">
-          <span class="material-icons"> open_in_new </span>
-          Open Link
-        </a>
+        <template v-else>
+          <a class="btn pink" :href="hashedLink" target="_blank">
+            <span class="material-icons"> open_in_new </span>
+            Open
+          </a>
+          <button class="btn">
+            <span class="material-icons"> link </span>
+            Regenerate
+          </button>
+        </template>
+        <a
+          v-if="hashedLink"
+          class="btn blue"
+          :href="`http://twitter.com/share?text=${tweetText}&url=${generatedLink}`"
+        >
+          <span class="svg-icons">
+            <img src="@/assets/icons/twitter.svg" /> </span
+          >Tweet Your Link</a
+        >
       </div>
       <div v-if="hashedLink" class="link-area">
         <a :href="hashedLink" target="_blank">{{ generatedLink }}</a>
@@ -72,8 +78,8 @@ export default {
     return {
       username: null,
       reponame: null,
-      selectedIcon: null,
-      selectedColor: null,
+      selectedIcon: { id: 1 },
+      selectedColor: { r: 40, g: 203, b: 164 },
       generatedLink: null,
       tweetText: 'Look at this awesome repo I found!',
     }
@@ -110,3 +116,72 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.home {
+  .head {
+    margin-bottom: 20px;
+
+    h2,
+    h4 {
+      margin: 0;
+    }
+
+    h2 {
+      margin-bottom: 3px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: $fontGray;
+    }
+  }
+
+  .card {
+    padding: 32px 25px;
+    width: auto;
+
+    .inputs {
+      display: flex;
+      align-items: center;
+      grid-gap: 10px;
+
+      .input-divider {
+        @include global;
+        display: flex;
+        align-items: center;
+        padding: 14px 18px;
+        font-weight: 500;
+        color: $fontGray;
+      }
+    }
+
+    .select-color {
+      display: flex;
+      margin: 20px 0px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .select-color .label,
+    .select-icon .label {
+      font-size: 18px;
+      font-weight: 500;
+      color: $fontDark;
+    }
+  }
+
+  .link-area {
+    padding: 15px 16px;
+    margin-top: 20px;
+    background: #f1f1f1;
+    color: $fontDark;
+    border-radius: $borderRadius;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+</style>

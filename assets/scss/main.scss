@@ -7,6 +7,7 @@ $yellow:#FECF58;
 $yellowDark:#dab14a;
 $white:#FFF;
 $gray:#F9F9F9;
+$grayDark:#E5E5E5;
 $fontBlack: #322929;
 $fontMid: #646464;
 $fontDark: #818181;
@@ -15,11 +16,137 @@ $shadow: 0px 1px 12px -6px rgba(0, 0, 0, 0.25);
 $borderRadius: 9px;
 $borderRounded: 200px;
 
+@mixin global {
+  box-shadow: $shadow;
+  background: $white;
+  border-radius: $borderRadius;
+}
+
+
 body, * {
   font-family: $font;
+  transition: 0.2s;
 }
 
-span.svg-icons img {
-  width: 20px;
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+}
+
+
+.card {
+  background-color: $gray;
+  border: 1px solid $grayDark;
+  border-radius: 15px;
+  box-shadow: $shadow;
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+}
+
+
+span.svg-icons {
+display: flex;
+  img {
+    width: 20px;
+  }
+}
+
+
+input[type="text"]{
+  @include global;
+  border: none;
+  padding: 15px 16px;
+  font-weight: 600;
+  width: 100%;
+  font-size: inherit;
+
+  &::placeholder {
+    color: $fontGray;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+}
+
+.btn {
+  display: flex;
+  background: $fontDark;
+  width: max-content;
+  padding: 13px 15px;
+  border-radius: $borderRadius;
+  grid-gap: 8px;
+  align-items: center;
+  color: $white;
+  font-weight: 500;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+
+  &:hover{
+    background: $fontBlack;
+  }
+
+  &.pink{
+    background: $pink;
+
+    &:hover {
+      background: $pinkDark;
+    }
+  }
+
+  &.yellow {
+    background: $yellow;
+
+    &:hover {
+      background: $yellowDark;
+    }
+  }
+
+  &.blue {
+    background: $blue;
+
+    &:hover {
+      background: $blueDark;
+    }
+  }
+
+
+  &.small{
+    padding: 6px 13px 6px 10px;
+    grid-gap: 5px;
+    span{
+      font-size: 15px;
+    }
+  }
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  border: none;
+  font-size: inherit;
+}
+
+.bottom{
+  margin-top: 20px;
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    grid-gap: 20px;
+  }
+}

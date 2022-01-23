@@ -5,8 +5,9 @@
       :key="icon.id"
       class="icon"
       :class="selectedIcon.id === icon.id ? 'active' : ''"
+      @click="selectIcons(icon)"
     >
-      <span class="material-icons" @click="selectIcons(icon)">
+      <span class="material-icons">
         {{ icon.name }}
       </span>
     </span>
@@ -39,4 +40,39 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.select-icons {
+  @include global;
+
+  display: flex;
+  padding: 15px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  .icon {
+    padding: 14px;
+    background: #f8f8f8;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    border-radius: 12px;
+    height: 40px;
+    width: 40px;
+    margin: 5px 4px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      font-size: 27px;
+      margin-left: -9px;
+      margin-top: -9px;
+      opacity: 0.3;
+    }
+
+    &.active span {
+      opacity: 1;
+    }
+  }
+}
+</style>
