@@ -1,6 +1,6 @@
-# Gitrepo Mono Frontend Challenge  
+# Gitrepo
 
-Hey, It's Volkan. It's a mono front-end challange .  
+Hey, It's Volkan. It's a weekend front-end challange .  
 
 - Project framework: ```Nuxt.js - 2.15.8```
 - Vuex: ```Dynamic Vuex Module Registration```
@@ -27,7 +27,3 @@ $ npm run build
 $ npm run start 
 ```
 
-## Contact
-
-For any further questions you can reach me with mail:  info@volkanakkus.com
-Thank you! 
