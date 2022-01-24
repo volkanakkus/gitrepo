@@ -1,6 +1,9 @@
 # Gitrepo
 
-Hey, It's Volkan. It's a weekend front-end challange .  
+Hey, It's Volkan. It's a weekend front-end challange.
+You can create shareable Github Repo Links. 
+
+Here's the [demo](https://gitrepoo.vercel.app/) 
 
 - Project framework: ```Nuxt.js - 2.15.8```
 - Vuex: ```Dynamic Vuex Module Registration```
