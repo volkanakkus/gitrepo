@@ -1,6 +1,6 @@
 # Gitrepo
 
-Hey, It's Volkan. It's a weekend front-end challange.
+Hey, this is a weekend frontend challenge.
 You can create shareable Github Repo Links. 
 
 Here's the [demo](https://gitrepoo.vercel.app/) 
